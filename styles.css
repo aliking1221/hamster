@@ -52,7 +52,6 @@
     --box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
-/* General body styles */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: var(--bg-color);
@@ -81,7 +80,6 @@ h1 {
     color: var(--heading-color);
 }
 
-/* Grid container with responsiveness */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -132,7 +130,7 @@ h1 {
 
 .form-group {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: center; /* Center alignment */
 }
 
 label {
@@ -140,6 +138,17 @@ label {
     margin-bottom: 8px;
     font-weight: 500;
     color: var(--label-color);
+}
+
+.key-slider {
+    display: flex;
+    justify-content: center; /* Center alignment */
+    align-items: center;
+}
+
+input[type="range"] {
+    width: 80%; /* Adjust width as needed */
+    margin: 0 10px;
 }
 
 button {
