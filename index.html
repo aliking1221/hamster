@@ -1,130 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hamster Key Generator</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Hamster Key Generator</h1>
-        <div id="gameSelectContainer" class="grid-container">
-            <div class="game-option" data-game="20">
-                <img src="https://cdn.hamsterkombat.io/factory_world/image.webp" alt="Factory World">
-                <p>Factory World</p>
-            </div>
-            <div class="game-option" data-game="19">
-                <img src="https://cdn.hamsterkombat.io/among_water/image.webp" alt="Among Water">
-                <p>Among Water</p>
-            </div>
-            <div class="game-option hideable" data-game="18">
-                <img src="https://cdn.hamsterkombat.io/infected_frontier/image.webp" alt="Infected Frontier">
-                <p>Infected Frontier</p>
-            </div>
-            <div class="game-option hideable" data-game="17">
-                <img src="https://cdn.hamsterkombat.io/countmasters/image.webp" alt="Count Masters">
-                <p>Count Masters</p>
-            </div>
-            <div class="game-option hideable" data-game="16">
-                <img src="https://cdn.hamsterkombat.io/pin_out/image.webp" alt="Pin Out Master">
-                <p>Pin Out Master</p>
-            </div>
-            <div class="game-option hideable" data-game="15">
-                <img src="https://cdn.hamsterkombat.io/hide_balls/image.webp" alt="Hide Ball">
-                <p>Hide Ball</p>
-            </div>
-            <div class="game-option hideable" data-game="14">
-                <img src="https://cdn.hamsterkombat.io/bouncemasters/image.webp" alt="Bouncemasters">
-                <p>Bouncemasters</p>
-            </div>
-            <div class="game-option hideable" data-game="13">
-                <img src="https://cdn.hamsterkombat.io/stone_age/image.webp" alt="Stone Age">
-                <p>Stone Age</p>
-            </div>
-            <div class="game-option hideable" data-game="12">
-                <img src="https://cdn.hamsterkombat.io/fluff/image.webp" alt="Fluff Crusade">
-                <p>Fluff Crusade</p>
-            </div>
-            <div class="game-option hideable" data-game="10">
-                <img src="https://cdn.hamsterkombat.io/tile_trio/image.webp" alt="Tile Trio">
-                <p>Tile Trio</p>
-            </div>
-            <div class="game-option hideable" data-game="11">
-                <img src="https://cdn.hamsterkombat.io/zoopolis/image.webp" alt="Zoopolis">
-                <p>Zoopolis</p>
-            </div>
-            <div class="game-option hideable" data-game="8">
-                <img src="https://cdn.hamsterkombat.io/mow_trim/image.webp" alt="Mow and Trim">
-                <p>Mow and Trim</p>
-            </div>
-            <div class="game-option hideable" data-game="7">
-                <img src="https://cdn.hamsterkombat.io/polysphere/image.webp" alt="Polysphere">
-                <p>Polysphere</p>
-            </div>
-            <div class="game-option hideable" data-game="6">
-                <img src="https://cdn.hamsterkombat.io/twerk/image.webp" alt="Twerk Race 3D">
-                <p>Twerk Race 3D</p>
-            </div>
-            <div class="game-option hideable" data-game="5">
-                <img src="https://cdn.hamsterkombat.io/merge_away/image.webp" alt="Merge Away">
-                <p>Merge Away</p>
-            </div>
-            <div class="game-option hideable" data-game="2">
-		    <img src="https://cdn.hamsterkombat.io/chain_cube/image.webp" alt="Chain Cube 2048">
-                <p>Chain Cube 2048</p>
-            </div>
-            <div class="game-option hideable" data-game="4">
-                <img src="https://cdn.hamsterkombat.io/train_miner/image.webp" alt="Train Miner">
-                <p>Train Miner</p>
-            </div>
-        </div>
+/* Root Variables */
+:root {
+    --main-bg-color: #f4f4f9;
+    --main-text-color: #333;
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #2ecc71;
+}
 
-        <button id="showMoreBtn">Show More</button>
+/* General styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
 
-        <div class="form-group hidden" id="keyCountGroup">
-            <label for="keyCountSelect">Select Number of Keys:</label>
-            <div id="keyCountSelect" class="key-slider">
-                <input type="range" min="1" max="4" value="1" id="keyRange">
-                <span id="keyValue">1</span>
-            </div>
-        </div>
-        <button id="startBtn" class="hidden">Generate Keys</button>
+.container {
+    width: 90%; /* Change width for better mobile display */
+    max-width: 1200px; /* Optional: Limit max width */
+    margin: 0 auto;
+    text-align: center;
+}
 
-        <div id="progressContainer" class="hidden">
-            <div class="progress-bar">
-                <div id="progressBar"></div>
-            </div>
-            <p id="progressText">0%</p>
-            <p id="progressLog">Starting...</p>
-        </div>
+h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+}
 
-        <div id="keyContainer" class="hidden">
-            <h2 id="generatedKeysTitle" class="hidden">Generated Keys</h2>
-            <div id="keysList"></div>
-            <button id="copyAllBtn" class="hidden">Copy All Keys</button>
-        </div>
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
 
-        <p id="keyCountLabel">Number of keys:</p>
+/* Game options */
+.game-option {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
-        <button id="generateMoreBtn" class="hidden">Generate More Keys</button>
-        <p id="copyStatus" class="hidden">Keys copied to clipboard!</p>
+.game-option:hover {
+    transform: scale(1.05);
+}
 
-        <div class="footer">
-            <p>Disclaimer: This tool is for educational purposes only. Use responsibly.</p>
-            <button id="sourceCode">Source code</button>
-            <a href="https://t.me/Taps_Drop" id="channelLink">Channel</a>
-            <button id="themeToggleBtn" onclick="toggleTheme()"><i id="themeIcon" class="fas fa-sun"></i></button>
-        </div>
-    </div>
+.hideable {
+    display: none;
+}
 
-    <script>
-        window.onload = function() {
-            window.location.href = "https://t.me/Taps_Drop";
-        };
-    </script>
-    <script src="script.js"></script>
-</body>
-</html>
+#showMoreBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#showMoreBtn:hover {
+    background-color: var(--secondary-color);
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.key-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#keyCountSelect {
+    display: flex;
+    align-items: center;
+}
+
+#keyRange {
+    margin: 0 10px;
+    width: 200px;
+}
+
+#keyValue {
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+#progressContainer {
+    margin-top: 20px;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 20px;
+}
+
+#progressBar {
+    background-color: var(--accent-color);
+    height: 100%;
+    width: 0;
+    transition: width 0.5s ease;
+}
+
+#progressText {
+    margin-top: 5px;
+}
+
+#keyContainer {
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+#channelLink {
+    display: block;
+    margin: 20px 0;
+}
+
+#themeToggleBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    #showMoreBtn {
+        width: 100%;
+    }
+
+    #keyRange {
+        width: 100%;
+    }
+}
