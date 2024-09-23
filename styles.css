@@ -1,4 +1,4 @@
-
+/* Root Variables */
 :root {
     --main-bg-color: #f4f4f9;
     --main-text-color: #333;
@@ -17,8 +17,8 @@ body {
 }
 
 .container {
-    width: 90%; /* Change width for better mobile display */
-    max-width: 1200px; /* Optional: Limit max width */
+    width: 90%; 
+    max-width: 1200px; 
     margin: 0 auto;
     text-align: center;
 }
@@ -144,27 +144,22 @@ h1 {
     font-size: 1.5rem;
 }
 
-/* Dropdown styles */
+/* Centering the dropdown and increasing its size */
 .dropdown {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    margin-top: 20px; /* Optional: Add margin to top */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px; /* Width of the dropdown */
+    z-index: 1000; /* Ensures it is above other content */
 }
 
 .dropdown-content {
-    display: none; /* Hidden by default */
-    position: absolute; /* Position it below the button */
-    background-color: #f9f9f9;
-    min-width: 200px; /* Adjust width to make it larger */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Offset the width */
-}
-
-.dropdown:hover .dropdown-content {
-    display: block; /* Show the dropdown on hover */
+    width: 100%; /* Full width of the dropdown */
+    padding: 10px; /* Increase padding for larger appearance */
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Media Queries */
