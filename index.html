@@ -2,37 +2,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Генератор Ключей Hamster Kombat</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <main class="main-container">
-        <section class="container">
-            <h1>Генератор Ключей Hamster Kombat</h1>
-        </section>
-
-        <button id="telegramBtn" class="button footer-button" onclick="window.location.href='https://t.me/Hamster_Dimond'">Telegram</button>
-    </main>
-
-    <div class="overlay"></div>
-    <div class="alert-box" id="alertBox">
-        <p>You must be a member in our main channel... Thank you for your support, dear ones</p>
-        <button id="joinBtn">Join</button>
-    </div>
-
-    <script>
-        if (!localStorage.getItem('alertShown')) {
-            document.getElementById('alertBox').style.display = 'block';
-            document.querySelector('.overlay').style.display = 'block';
-
-            document.getElementById('joinBtn').addEventListener('click', function() {
-                localStorage.setItem('alertShown', 'true');
-                window.location.href = 'https://t.me/Hamster_Dimond';
-            });
-        }
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hamster Dimond Generator</title>
