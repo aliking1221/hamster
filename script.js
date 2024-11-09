@@ -1,47 +1,3 @@
-
-function toggleTheme() {
-    const html = document.documentElement;
-    const themeIcon = document.getElementById('themeIcon');
-    
-    if (html.getAttribute('data-theme') === 'dark') {
-        html.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-    } else {
-        html.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-    }
-}
-
-function setTheme() {
-    const html = document.documentElement;
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        html.setAttribute('data-theme', 'dark');
-    } else if (savedTheme === 'light') {
-        html.removeAttribute('data-theme');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        html.setAttribute('data-theme', 'dark');
-    }
-}
-
-// Call setTheme on page load
-// Call setTheme on page load
-document.addEventListener('DOMContentLoaded', () => {
-    setTheme();
-    const themeIcon = document.getElementById('themeIcon');
-    if (document.documentElement.getAttribute('data-theme') === 'dark') {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-    }
-});
-
-// Listen for changes in system color scheme
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setTheme);
-
 document.addEventListener('DOMContentLoaded', () => {
     const games = {
         1: {
@@ -49,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appToken: 'd28721be-fd2d-4b45-869e-9f253b554e50',
             promoId: '43e35910-c168-4634-ad4f-52fd764a843f',
             timing: 30000, // 30 seconds
-            attempts: 25,
+            attempts: 20,
         },
         2: {
             name: 'Chain Cube 2048',
@@ -62,22 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'My Clone Army',
             appToken: '74ee0b5b-775e-4bee-974f-63e7f4d5bacb',
             promoId: 'fe693b26-b342-4159-8808-15e3ff7f8767',
-            timing: 180000, // 180 seconds
-            attempts: 30,
+            timing: 120000, // 180 seconds
+            attempts: 20,
         },
         4: {
             name: 'Train Miner',
             appToken: '82647f43-3f87-402d-88dd-09a90025313f',
             promoId: 'c4480ac7-e178-4973-8061-9ed5b2e17954',
-            timing: 30000, // 30 seconds
-            attempts: 15,
+            timing: 120000, // 30 seconds
+            attempts: 20,
         },
         5: {
             name: 'Merge Away',
             appToken: '8d1cc2ad-e097-4b86-90ef-7a27e19fb833',
             promoId: 'dc128d28-c45b-411c-98ff-ac7726fbaea4',
             timing: 30000, // 30 seconds
-            attempts: 25,
+            attempts: 20,
         },
         6: {
             name: 'Twerk Race 3D',
@@ -90,21 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Polysphere',
             appToken: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
             promoId: '2aaf5aee-2cbc-47ec-8a3f-0962cc14bc71',
-            timing: 20000, // 20 seconds
+            timing: 30000, // 20 seconds
             attempts: 20,
         },
         8: {
             name: 'Mow and Trim',
             appToken: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
             promoId: 'ef319a80-949a-492e-8ee0-424fb5fc20a6',
-            timing: 20000, // 20 seconds
+            timing: 120000, // 20 seconds
             attempts: 20,
         },
         9: {
             name: 'Mud Racing',
             appToken: '8814a785-97fb-4177-9193-ca4180ff9da8',
             promoId: '8814a785-97fb-4177-9193-ca4180ff9da8',
-            timing: 20000, // 20 seconds
+            timing: 30000, // 20 seconds
             attempts: 20,
         },
         10: {
@@ -125,28 +81,28 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'Fluff Crusade',
             appToken: '112887b0-a8af-4eb2-ac63-d82df78283d9',
             promoId: '112887b0-a8af-4eb2-ac63-d82df78283d9',
-            timing: 20000, // 20 seconds
+            timing: 40000, // 40 seconds
             attempts: 30,
         },
         13: {
             name: 'Stone Age',
             appToken: '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
             promoId: '04ebd6de-69b7-43d1-9c4b-04a6ca3305af',
-            timing: 20000, // 20 seconds
+            timing: 20000, // 40 seconds
             attempts: 30,
         },
-       14: {
+        14: {
             name: 'Bouncemasters',
             appToken: 'bc72d3b9-8e91-4884-9c33-f72482f0db37',
             promoId: 'bc72d3b9-8e91-4884-9c33-f72482f0db37',
-            timing: 20000, // 20 seconds
+            timing: 20000, // 40 seconds
             attempts: 30,
         },
         15: {
             name: 'Hide Ball',
             appToken: '4bf4966c-4d22-439b-8ff2-dc5ebca1a600',
             promoId: '4bf4966c-4d22-439b-8ff2-dc5ebca1a600',
-            timing: 40000, // 30 seconds
+            timing: 20000, // 30 seconds
             attempts: 30,
         },
         16: {
@@ -220,23 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let selectedGame = null;
 
-    sourceCode.addEventListener('click', () => {
-        window.open('https://github.com/ShafiqSadat/HamsterKeyGenWeb', '_blank');
-    });
-
     gameOptions.forEach(option => {
-        option.addEventListener('click', () => {
-            gameOptions.forEach(opt => opt.classList.remove('selected'));
-            option.classList.add('selected');
-            selectedGame = option.dataset.game;
-    
-            keyCountGroup.classList.remove('hidden');
-            startBtn.classList.remove('hidden');
-    
-            // Smooth scroll to the key count group
-            keyCountGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
+    option.addEventListener('click', () => {
+        gameOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        selectedGame = option.dataset.game;
+
+        keyCountGroup.classList.remove('hidden');
+        startBtn.classList.remove('hidden');
+        
+        // Smooth scroll to the key count group
+        keyCountGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
+});
 
     keyRange.addEventListener('input', () => {
         keyValue.innerText = keyRange.value;
@@ -256,11 +208,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.grid-container').style.display = 'none';
         keyCountGroup.style.display = 'none';
 
-        keyCountLabel.innerText = `Number of keys: ${keyCount}`;
+        keyCountLabel.innerText = `Trying to get ${keyCount} keys`;
 
         progressBar.style.width = '0%';
         progressText.innerText = '0%';
-        progressLog.innerText = 'Starting...';
+        progressLog.innerText = 'Wake up...';
         progressContainer.classList.remove('hidden');
         keyContainer.classList.add('hidden');
         generatedKeysTitle.classList.add('hidden');
@@ -283,14 +235,14 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 clientToken = await login(clientId, game.appToken);
             } catch (error) {
-                alert(`Failed to login: ${error.message}`);
+                
                 startBtn.disabled = false;
                 return null;
             }
 
             for (let i = 0; i < game.attempts; i++) {
                 const hasCode = await emulateProgress(clientToken, game.promoId);
-                updateProgress((100 / game.attempts) / keyCount, `Emulating progress ${i + 1}/${game.attempts}...`);
+                updateProgress((100 / game.attempts) / keyCount, `Connecting to the Matrix ${i + 1}/${game.attempts}...`);
                 if (hasCode) {
                     break;
                 }
@@ -299,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const key = await generateKey(clientToken, game.promoId);
-                updateProgress(100 / keyCount, 'Generating key...');
+                updateProgress(100 / keyCount, 'Hacking codes...');
                 return key;
             } catch (error) {
                 alert(`Failed to generate key: ${error.message}`);
@@ -460,3 +412,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+    // Открыть модальное окно при загрузке страницы
+    modal.style.display = 'block';
+
+    // Закрыть модальное окно по нажатию на кнопку
+    closeModalBtn.addEventListener('click', function() {
+        modal.style.display = 'none';
+    });
+
+    // Запретить нажатие других кнопок, пока модальное окно открыто
+    document.addEventListener('click', function(event) {
+        if (modal.style.display === 'block' && !event.target.closest('.modal-content')) {
+            event.stopPropagation();
+        }
+    }, true);
+});
+
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+        const font_size = 16;
+        const columns = canvas.width / font_size;
+
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#0F0';
+            ctx.font = `${font_size}px arial`;
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix[Math.floor(Math.random() * matrix.length)];
+                ctx.fillText(text, i * font_size, drops[i] * font_size);
+
+                if (drops[i] * font_size > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 33);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Функция обновления прогресс-бара
+        function updateProgressBar(percentage) {
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.innerText = Math.round(percentage) + '%';
+            progressBar.setAttribute('data-progress', percentage);
+        }
+
+        // Обновление значения выбора количества ключей
+        const keyRange = document.getElementById('keyRange');
+        const keyValue = document.getElementById('keyValue');
+
+        keyRange.addEventListener('input', () => {
+            keyValue.textContent = keyRange.value;
+        });
+
+       
